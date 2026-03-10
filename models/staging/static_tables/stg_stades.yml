@@ -18,8 +18,7 @@ models:
                 "ALLEMAGNE", "MEXIQUE", "UKRAINE", "GRÈCE", 
                 "ITALIE", "PORTUGAL", "ÉCOSSE", "SUISSE", 
                 "FRANCE", "MAROC", "TURQUIE", "PAYS-BAS", 
-                "BELGIQUE", "ANGLETERRE", "ESPAGNE", "AUTRICHE"
-              ]
+                "BELGIQUE", "ANGLETERRE", "ESPAGNE", "AUTRICHE"              ]
 
       - name: stade_nom
         tests:
