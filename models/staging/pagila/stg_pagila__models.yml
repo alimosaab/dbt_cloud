@@ -1,0 +1,100 @@
+version: 2
+
+models:
+  - name: stg_pagila__actors
+    description: "Liste des acteurs de films."
+    columns:
+      - name: actor_id
+        tests: [unique, not_null]
+
+  - name: stg_pagila__address
+    description: "Adresses physiques des clients et du personnel."
+    columns:
+      - name: address_id
+        tests: [unique, not_null]
+
+  - name: stg_pagila__category
+    description: "Catégories de films (Action, Animation, etc.)."
+    columns:
+      - name: category_id
+        tests: [unique, not_null]
+
+  - name: stg_pagila__city
+    description: "Villes associées aux adresses."
+    columns:
+      - name: city_id
+        tests: [unique, not_null]
+
+  - name: stg_pagila__country
+    description: "Pays associés aux villes."
+    columns:
+      - name: country_id
+        tests: [unique, not_null]
+
+  - name: stg_pagila__customers
+    description: "Données de base des clients."
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+
+  - name: stg_pagila__films
+    description: "Catalogue des films disponibles."
+    columns:
+      - name: film_id
+        tests: [unique, not_null]
+      - name: mpaa_rating
+        tests:
+          - accepted_values:
+              values: ['G', 'PG', 'PG-13', 'R', 'NC-17']
+
+  - name: stg_pagila__film_actor
+    description: "Table de liaison entre acteurs et films."
+    columns:
+      - name: actor_id
+        tests: [not_null]
+      - name: film_id
+        tests: [not_null]
+
+  - name: stg_pagila__film_category
+    description: "Table de liaison entre catégories et films."
+    columns:
+      - name: film_id
+        tests: [not_null]
+      - name: category_id
+        tests: [not_null]
+
+  - name: stg_pagila__inventory
+    description: "État des stocks de films par magasin."
+    columns:
+      - name: inventory_id
+        tests: [unique, not_null]
+
+  - name: stg_pagila__language
+    description: "Langues des films."
+    columns:
+      - name: language_id
+        tests: [unique, not_null]
+
+  - name: stg_pagila__payments
+    description: "Transactions de paiement."
+    columns:
+      - name: payment_id
+        tests: [unique, not_null]
+
+  - name: stg_pagila__rentals
+    description: "Historique des locations."
+    columns:
+      - name: rental_id
+        tests: [unique, not_null]
+
+  - name: stg_pagila__staff
+    description: "Membres du personnel des magasins."
+    columns:
+      - name: staff_id
+        tests: [unique, not_null]
+
+  - name: stg_pagila__stores
+    description: "Informations sur les boutiques."
+    columns:
+      - name: store_id
+        tests: [unique, not_null]
