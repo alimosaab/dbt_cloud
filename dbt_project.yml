@@ -1,0 +1,39 @@
+name: 'pagila_analytics'
+version: '1.0.0'
+config-version: 2
+
+# Configuration du profil (dbt Cloud gère cela via la connexion créée)
+profile: 'default'
+
+# Dossiers du projet
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configuration des modèles
+models:
+  pagila_analytics:
+    # Par défaut, tout est matérialisé en vue
+    +materialized: view
+    
+    # Organisation et matérialisation par dossier
+    staging:
+      +schema: STG
+      +materialized: view
+    
+    # Les modèles intermédiaires ne polluent pas la base
+    intermediate:
+      +schema: intermediate
+      +materialized: ephemeral 
+    
+    # Les tables finales sont persistées pour la performance
+    marts:
+      +schema: marts
+      +materialized: table 

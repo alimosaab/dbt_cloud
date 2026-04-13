@@ -1,0 +1,122 @@
+version: 2
+
+sources:
+  - name: pagila
+    description: "Données brutes de la base de données de location de DVD Pagila (Neon)."
+    database: neondb
+    schema: pagila
+    tables:
+      - name: actor
+        columns:
+          - name: actor_id
+            tests:
+              - unique
+              - not_null
+
+      - name: address
+        columns:
+          - name: address_id
+            tests:
+              - unique
+              - not_null
+
+      - name: category
+        columns:
+          - name: category_id
+            tests:
+              - unique
+              - not_null
+
+      - name: city
+        columns:
+          - name: city_id
+            tests:
+              - unique
+              - not_null
+
+      - name: country
+        columns:
+          - name: country_id
+            tests:
+              - unique
+              - not_null
+
+      - name: customer
+        columns:
+          - name: customer_id
+            tests:
+              - unique
+              - not_null
+
+      - name: film
+        columns:
+          - name: film_id
+            tests:
+              - unique
+              - not_null
+          - name: rating
+            tests:
+              - accepted_values:
+                  values: ['G', 'PG', 'PG-13', 'R', 'NC-17']
+
+      - name: film_actor
+        description: "Table de liaison entre les films et les acteurs."
+        columns:
+          - name: actor_id
+            tests:
+              - not_null
+          - name: film_id
+            tests:
+              - not_null
+
+      - name: film_category
+        description: "Table de liaison entre les films et les catégories."
+        columns:
+          - name: film_id
+            tests:
+              - not_null
+          - name: category_id
+            tests:
+              - not_null
+
+      - name: inventory
+        columns:
+          - name: inventory_id
+            tests:
+              - unique
+              - not_null
+
+      - name: language
+        columns:
+          - name: language_id
+            tests:
+              - unique
+              - not_null
+
+      - name: payment
+        columns:
+          - name: payment_id
+            tests:
+              - unique
+              - not_null
+
+      - name: rental
+        columns:
+          - name: rental_id
+            tests:
+              - unique
+              - not_null
+
+      - name: staff
+        columns:
+          - name: staff_id
+            tests:
+              - unique
+              - not_null
+
+      - name: store
+        columns:
+          - name: store_id
+            tests:
+              - unique
+              - not_null

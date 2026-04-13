@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Dimension client enrichie."
+  - name: fct_rentals
+    description: "Faits de location (Incrémental)."
